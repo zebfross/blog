@@ -4,11 +4,11 @@ require "stringex"
 
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
-ssh_user       = "zebfross@just51.justhost.com"
+ssh_user       = "zebfross@zebfross.com"
 ssh_port       = "22"
-document_root  = "~/public_html/blog/"
-rsync_delete   = false
-rsync_args     = "--chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r"  # Any extra arguments to pass to rsync
+document_root  = "~/www/blog/"
+rsync_delete   = true
+rsync_args     = "-rlt --no-o --no-g"  # Any extra arguments to pass to rsync
 deploy_default = "rsync"
 
 # This will be configured for you when you run config_deploy
@@ -175,7 +175,7 @@ end
 
 desc "Clean out caches: .pygments-cache, .gist-cache, .sass-cache"
 task :clean do
-  rm_rf [".pygments-cache/**", ".gist-cache/**", ".sass-cache/**", "source/stylesheets/screen.css"]
+  rm_rf [Dir.glob(".pygments-cache/**"), Dir.glob(".gist-cache/**"), Dir.glob(".sass-cache/**"), "source/stylesheets/screen.css"]
 end
 
 desc "Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom"
@@ -245,7 +245,7 @@ task :rsync do
     exclude = "--exclude-from '#{File.expand_path('./rsync-exclude')}'"
   end
   puts "## Deploying website via Rsync"
-  ok_failed system("C:\\cygwin\\bin\\rsync.exe -avze 'C:\\cygwin\\bin\\ssh.exe -p #{ssh_port}' #{exclude} #{rsync_args} #{"--delete" unless rsync_delete == false} #{public_dir}/ #{ssh_user}:#{document_root}")
+  ok_failed system("rsync -vze 'ssh -p #{ssh_port}' #{exclude} #{rsync_args} #{"--delete" unless rsync_delete == false} #{public_dir}/ #{ssh_user}:#{document_root}")
 end
 
 desc "deploy public directory to github pages"
@@ -341,8 +341,9 @@ task :setup_github_pages, :repo do |t, args|
       end
     end
   end
+  url = blog_url(user, project)
   jekyll_config = IO.read('_config.yml')
-  jekyll_config.sub!(/^url:.*$/, "url: #{blog_url(user, project)}")
+  jekyll_config.sub!(/^url:.*$/, "url: #{url}")
   File.open('_config.yml', 'w') do |f|
     f.write jekyll_config
   end
@@ -391,7 +392,7 @@ def blog_url(user, project)
   url = if File.exists?('source/CNAME')
     "http://#{IO.read('source/CNAME').strip}"
   else
-    "http://#{user}.github.io"
+    "http://#{user.downcase}.github.io"
   end
   url += "/#{project}" unless project == ''
   url

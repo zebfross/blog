@@ -1,13 +1,16 @@
 source "https://rubygems.org"
 
+require 'rbconfig'
+
 group :development do
   gem 'rake', '~> 10.0'
   gem 'jekyll', '~> 2.0'
-  gem 'jekyll-page-hooks', '~> 1.2'
-  gem 'jekyll-date-format', '~> 1.0'
+  gem 'octopress-hooks', '~> 2.2'
+  gem 'octopress-date-format', '~> 2.0'
   gem 'jekyll-sitemap'
   gem 'rdiscount', '~> 2.0'
   gem 'RedCloth', '~> 4.2.9'
+  gem 'redcarpet', '~> 3.2.0'
   gem 'haml', '~> 4.0'
   gem 'compass', '~> 0.12.2'
   gem 'sass-globbing', '~> 1.0.0'
@@ -17,3 +20,6 @@ group :development do
 end
 
 gem 'sinatra', '~> 1.4.2'
+if RbConfig::CONFIG['target_os'] =~ /mswin|mingw|cygwin/i
+  gem 'wdm', '>= 0.1.0'
+end
