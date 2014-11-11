@@ -8,6 +8,12 @@ Copyright &copy; {{ site.time | date: "%Y" }}
 <link href="/javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="/javascripts/google-code-prettify/prettify.js"></script>
 <script type="text/javascript">
-	$("pre").addClass("prettyprint");
-	document.body.onload = prettyPrint;
+    document.body.onload = function() {
+        var preTags = document.querySelectorAll("pre");
+        for (var i = 0; i < preTags.length; i++) {
+            var tag = preTags[i];
+            tag.className = tag.className + " prettyprint";
+        }
+        prettyPrint();
+    };
 </script>
