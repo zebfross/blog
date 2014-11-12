@@ -7,6 +7,7 @@ Copyright &copy; {{ site.time | date: "%Y" }}
 
 <link href="/javascripts/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="/javascripts/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="/javascripts/nanoscroller.js"></script>
 <script type="text/javascript">
     document.body.onload = function() {
         var preTags = document.querySelectorAll("pre");
@@ -15,5 +16,6 @@ Copyright &copy; {{ site.time | date: "%Y" }}
             tag.className = tag.className + " prettyprint";
         }
         prettyPrint();
+        $(".nano").nanoScroller();
     };
 </script>
