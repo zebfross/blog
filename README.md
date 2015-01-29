@@ -1,3 +1,6 @@
+[![Blog](http://zebfross.com:3000/zebfross/blog/badge?branch=master)](http://zebfross.com:3000/zebfross/blog)
+
+
 ## What is Octopress?
 
 Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.
