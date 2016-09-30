@@ -1,44 +1,125 @@
-[![Blog](http://zebfross.com:3000/zebfross/blog/badge?branch=master)](http://zebfross.com:3000/zebfross/blog)
+Pico
+====
 
+[![License](https://picocms.github.io/Pico/badges/pico-license.svg)](https://github.com/picocms/Pico/blob/master/LICENSE.md)
+[![Version](https://picocms.github.io/Pico/badges/pico-version.svg)](https://github.com/picocms/Pico/releases/latest)
+[![Build Status](https://api.travis-ci.org/picocms/Pico.svg)](https://travis-ci.org/picocms/Pico)
+[![Freenode IRC Webchat](https://picocms.github.io/Pico/badges/pico-chat.svg)](https://webchat.freenode.net/?channels=%23picocms)
+[![Tweet Button](https://cloud.githubusercontent.com/assets/640217/11483728/b0842918-976f-11e5-9185-d53261b3125b.png)](https://twitter.com/intent/tweet?text=Pico+is+a+stupidly+simple%2C+blazing+fast%2C+flat+file+CMS.+Visit+http%3A%2F%2Fpicocms.org+and+downlaod+%23picocms+today%21+via+%40gitpicocms&amp;related=gitpicocms)
 
-## What is Octopress?
+Pico is a stupidly simple, blazing fast, flat file CMS. See http://picocms.org/ for more info.
 
-Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.
+Screenshot
+-------
+![Pico Screenshot](https://cloud.githubusercontent.com/assets/640217/11488596/70b39396-978d-11e5-885e-01341ad9dd75.gif)
 
-1. **Octopress sports a clean responsive theme** written in semantic HTML5, focused on readability and friendliness toward mobile devices.
-2. **Code blogging is easy and beautiful.** Embed code (with [Solarized](http://ethanschoonover.com/solarized) styling) in your posts from gists, jsFiddle or from your filesystem.
-3. **Third party integration is simple** with built-in support for Pinboard, Delicious, GitHub Repositories, Disqus Comments and Google Analytics.
-4. **It's easy to use.** A collection of rake tasks simplifies development and makes deploying a cinch.
-5. **Ships with great plug-ins** some original and others from the Jekyll community &mdash; tested and improved.
+Install
+-------
 
-**Note**: Octopress requires a minimum Ruby version of `1.9.3-p0`.
+You can install Pico either using a pre-bundled release or with composer. Pico is also available on [Packagist.org][] and may be included in other projects via `composer require picocms/pico`. Pico requires PHP 5.3+
 
-## Documentation
+#### Using a pre-bundled release
 
-Check out [Octopress.org](http://octopress.org/docs) for guides and documentation.
-It should all apply to our current stable version (found in the `master`
-branch). If this is not the case, [please submit a
-fix to our docs repo](https://github.com/octopress/docs).
+Just [download the latest Pico release][LatestRelease] and upload all files to the `httpdocs` directory (e.g. `/var/www/html`) of your server.
 
-## Contributing
+#### Composer
 
-[![Build Status](https://travis-ci.org/imathis/octopress.png?branch=master)](https://travis-ci.org/imathis/octopress)
+###### Step 1 - for users
+[Download the *source code* of Pico's latest release][LatestRelease], upload all files to the `httpdocs` directory (e.g. `/var/www/html`) of your server and navigate to the upload directory using a shell.
 
-We love to see people contributing to Octopress, whether it's a bug report, feature suggestion or a pull request. At the moment, we try to keep the core slick and lean, focusing on basic blogging needs, so some of your suggestions might not find their way into Octopress. For those ideas, we started a [list of 3rd party plug-ins](https://github.com/imathis/octopress/wiki/3rd-party-plugins), where you can link your own Octopress plug-in repositories. For the future, we're thinking about ways to easier add them into our main releases.
+###### Step 1 - for developers
+Open a shell and navigate to the desired install directory of Pico within the `httpdocs` directory (e.g. `/var/www/html`) of your server. You can now clone Pico's Git repository as follows:
+```shell
+$ git clone https://github.com/picocms/Pico.git .
+```
+Please note that this gives you the current development version of Pico, what is likely *unstable* and *not ready for production use*!
 
+###### Step 2
+Download [composer][] and run it with the `install` option:
+```shell
+$ curl -sS https://getcomposer.org/installer | php
+$ php composer.phar install
+```
 
-## License
-(The MIT License)
+Upgrade
+-------
 
-Copyright © 2009-2013 Brandon Mathis
+Upgrading Pico is very easy: You just have to replace all of Pico's files - that's it! Nevertheless you should *always* create a backup of your Pico installation before upgrading.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ‘Software’), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Pico follows [Semantic Versioning 2.0][SemVer] and uses version numbers like `MAJOR`.`MINOR`.`PATCH`. When we update...
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+- the `PATCH` version (e.g. `1.0.0` to `1.0.1`), we made backwards-compatible bug fixes. It's then sufficient to extract [Pico's latest release][LatestRelease] to your existing installation directory and overwriting all files. Alternatively you can either use the [*source code* of Pico's latest release][LatestRelease] or pull from Pico's Git repository, but are then required to update Pico's [composer][] dependencies manually by running `php composer.phar update`.
 
-THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+- the `MINOR` version (e.g. `1.0` to `1.1`), we added functionality in a backwards-compatible manner, but anyway recommend you to "install" Pico newly. Backup all of your files, empty your installation directory and install Pico as elucidated above. You can then copy your `config/config.php` and `content` directory without any change. If applicable, you can also copy the folder of your custom theme within the `themes` directory. Provided that you're using plugins, also copy all of your plugins from the `plugins` directory.
 
+- the `MAJOR` version (e.g. `1.0` to `2.0`), we made incompatible API changes. We will then provide a appropriate upgrade tutorial.
 
-#### If you want to be awesome.
-- Proudly display the 'Powered by Octopress' credit in the footer.
-- Add your site to the Wiki so we can watch the community grow.
+Upgrading Pico 0.8 or 0.9 to Pico 1.0 is a special case. The new `PicoDeprecated` plugin ensures backwards compatibility, so you basically can follow the above upgrade instructions as if we updated the `MINOR` version. However, we recommend you to take some further steps to confine the necessity of `PicoDeprecated` as far as possible. For more information about what has changed with Pico 1.0 and a step-by-step upgrade tutorial, please refer to the [upgrade page of our website][HelpUpgrade].
+
+Run
+---
+
+You have nothing to consider specially, simply navigate to your Pico install using your favorite web browser. Pico's default contents will explain how to use your brand new, stupidly simple, blazing fast, flat file CMS.
+
+#### You don't have a web server?
+Starting with PHP 5.4 the easiest way to try Pico is using [the built-in web server of PHP][PHPServer]. Please note that PHPs built-in web server is for development and testing purposes only!
+
+###### Step 1
+Navigate to Pico's installation directory using a shell.
+
+###### Step 2
+Start PHPs built-in web server:
+```shell
+$ php -S 127.0.0.1:8080
+```
+
+###### Step 3
+Access Pico from http://localhost:8080.
+
+Getting Help
+------------
+
+#### Getting Help as a user
+If you want to get started using Pico, please refer to our [user docs][HelpUserDocs]. Please read the [upgrade notes][HelpUpgrade] if you want to upgrade from Pico 0.8 or 0.9 to Pico 1.0. You can find officially supported plugins and themes on [our website][OfficialPlugins]. A greater choice of third-party plugins and themes can be found in our [Wiki][] on the [plugins][WikiPlugins] or [themes][WikiThemes] pages respectively. If you want to create your own plugin or theme, please refer to the "Getting Help as a developer" section below.
+
+#### Getting Help as a developer
+If you're a developer, please refer to the "Contributing" section below and our [contribution guidelines][ContributionGuidelines]. To get you started with creating a plugin or theme, please read the [dev docs on our website][HelpDevDocs].
+
+#### You still need help or experience a problem with Pico?
+When the docs can't answer your question, you can get help by joining us on [#picocms on Freenode IRC](https://webchat.freenode.net/?channels=%23picocms). When you're experiencing problems with Pico, please don't hesitate to create a new [Issue][Issues] on GitHub. Concerning problems with plugins or themes, please refer to the website of the developer of this plugin or theme.
+
+**Before creating a new Issue,** please make sure the problem wasn't reported yet using [GitHubs search engine][IssuesSearch]. Please describe your issue as clear as possible and always include the *Pico version* you're using. Provided that you're using *plugins*, include a list of them too. We need information about the *actual and expected behavior*, the *steps to reproduce* the problem, and what steps you have taken to resolve the problem by yourself (i.e. *your own troubleshooting*).
+
+Contributing
+------------
+
+<!--flippa verify-->
+[![I Love Open Source](http://www.iloveopensource.io/images/logo-lightbg.png)](http://www.iloveopensource.io/projects/524c55dcca7964c617000756)
+
+You want to contribute to Pico? We really appreciate that! You can help make Pico better by [contributing code][PullRequests] or [reporting issues][Issues], but please take note of our [contribution guidelines][ContributionGuidelines]. In general you can contribute in three different areas:
+
+1. Plugins & Themes: You're a plugin developer or theme designer? We love you guys! You can find tons of information about how to develop plugins and themes at http://picocms.org/development/. If you have created a plugin or theme, please add it to our [Wiki][], either on the [plugins][WikiPlugins] or [themes page][WikiThemes]. Doing so, we may select and promote your plugin or theme on [our website][OfficialPlugins] as officially supported!
+
+2. Documentation: We always appreciate people improving our documentation. You can either improve the [inline user docs][EditInlineDocs] or the more extensive [user docs on our website][EditUserDocs]. You can also improve the [docs for plugin and theme developers][EditDevDocs]. Simply fork Pico from https://github.com/picocms/Pico, change the Markdown files and open a [pull request][PullRequests].
+
+3. Pico's Core: The supreme discipline is to work on Pico's Core. Your contribution should help *every* Pico user to have a better experience with Pico. If this is the case, fork Pico from https://github.com/picocms/Pico and open a [pull request][PullRequests]. We look forward to your contribution!
+
+[Packagist.org]: http://packagist.org/packages/picocms/pico
+[LatestRelease]: https://github.com/picocms/Pico/releases/latest
+[composer]: https://getcomposer.org/
+[SemVer]: http://semver.org
+[PHPServer]: http://php.net/manual/en/features.commandline.webserver.php
+[HelpUpgrade]: http://picocms.org/in-depth/upgrade/
+[HelpUserDocs]: http://picocms.org/docs/
+[HelpDevDocs]: http://picocms.org/development/
+[OfficialPlugins]: http://picocms.org/customization/
+[Wiki]: https://github.com/picocms/Pico/wiki
+[WikiPlugins]: https://github.com/picocms/Pico/wiki/Pico-Plugins
+[WikiThemes]: https://github.com/picocms/Pico/wiki/Pico-Themes
+[Issues]: https://github.com/picocms/Pico/issues
+[IssuesSearch]: https://github.com/picocms/Pico/search?type=Issues
+[PullRequests]: https://github.com/picocms/Pico/pulls
+[ContributionGuidelines]: https://github.com/picocms/Pico/blob/master/CONTRIBUTING.md
+[EditInlineDocs]: https://github.com/picocms/Pico/edit/master/content-sample/index.md
+[EditUserDocs]: https://github.com/picocms/Pico/tree/gh-pages/_docs
+[EditDevDocs]: https://github.com/picocms/Pico/tree/gh-pages/_development

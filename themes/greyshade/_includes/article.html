@@ -1,0 +1,24 @@
+{% if is_front_page %}
+	<div class="meta">
+		<div class="date">{% include("_includes/post/date.html")  %}{{ time }}</div>
+		<div class="tags">{% include("_includes/post/categories.html") %}</div>
+		{% if config.disqus_short_name and config.disqus_show_comment_count == true %}
+			<span class="comments"><a href="{{ root_url }}{{ page.url }}#disqus_thread">Comments</a></span>
+		{% endif %}
+	</div>
+	<h1 class="title" itemprop="name"><a href="{{ root_url }}{{ page.url }}" itemprop="url">{{ page.title }}</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		{{ page.raw_content | split("---", 3) | last | split("<!--more-->") | first | markdown }}
+		<a href="{{ root_url }}{{ page.url }}" class="more-link">{{ config.excerpt_link }}</a>
+	</div>
+{% else %}
+	<div class="meta">
+		<div class="date">{% include("_includes/post/date.html")  %}{{ time }}</div>
+		<div class="tags">{% include("_includes/post/categories.html") %}</div>
+		{% if config.disqus_short_name and config.disqus_show_comment_count == true %}
+			<span class="comments"><a href="{{ root_url }}{{ url }}#disqus_thread">Comments</a></span>
+		{% endif %}
+	</div>
+	<h1 class="title" itemprop="name">{{ meta.title }}</h1>
+	<div class="entry-content" itemprop="articleBody">{{ content }}</div>
+{% endif %}

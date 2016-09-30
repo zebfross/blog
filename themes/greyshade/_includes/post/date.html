@@ -1,0 +1,6 @@
+{% if page.time %}
+  <time datetime="{{ page.date }}" itemprop="datePublished">{{ page.date | date("m/d/Y") }}</time>
+{% endif %}
+{% if meta.time %}
+  <time datetime="{{ meta.date }}" itemprop="datePublished">{{ meta.date | date("m/d/Y") }}</time>
+{% endif %}
