@@ -1,10 +1,5 @@
 <?php // @codingStandardsIgnoreFile
 
-// check PHP version
-if (PHP_VERSION_ID < 50306) {
-    die('Pico requires PHP 5.3.6 or above to run');
-}
-
 // load dependencies
 require_once(__DIR__ . '/vendor/autoload.php');
 
