@@ -1,6 +1,6 @@
 <?php // @codingStandardsIgnoreFile
 
-// load dependencies
+// load dependencies unnecessary change
 require_once(dirname(__FILE__) . '/vendor/autoload.php');
 
 // instance Pico
