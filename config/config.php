@@ -20,7 +20,7 @@
  * BASIC
  */
 $config['site_title'] = 'Zebfross.com';              // Site title
-$config['base_url'] = 'http://localhost:8080';                    // Override base URL (e.g. http://example.com)
+$config['base_url'] = 'http://localhost:5002';                    // Override base URL (e.g. http://example.com)
 $config['rewrite_url'] = false;               // A boolean indicating forced URL rewriting
 $config["excerpt_link"] = "Read on &rarr;";
 

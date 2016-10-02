@@ -1,5 +1,5 @@
 <?php // @codingStandardsIgnoreFile
-
+error_reporting(E_ERROR | E_PARSE);
 // load dependencies unnecessary change
 require_once(dirname(__FILE__) . '/vendor/autoload.php');
 
@@ -10,6 +10,5 @@ $pico = new Pico(
     'plugins/', // plugins dir
     'themes/'   // themes dir
 );
-
 // run application
 echo $pico->run();
