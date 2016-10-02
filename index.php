@@ -1,11 +1,11 @@
 <?php // @codingStandardsIgnoreFile
 
 // load dependencies
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once(dirname(__FILE__) . '/vendor/autoload.php');
 
 // instance Pico
 $pico = new Pico(
-    __DIR__,    // root dir
+    dirname(__FILE__),    // root dir
     'config/',  // config dir
     'plugins/', // plugins dir
     'themes/'   // themes dir
