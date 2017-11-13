@@ -1,0 +1,13 @@
+<div class="meta">
+	<div class="date"><%- partial("post/date", {post: post}) %></div>
+	<div class="tags"><%- partial("post/categories", {post: post}) %></div>
+	
+	<% if (config.disqus_short_name && config.disqus_show_comment_count == true) { %>
+		<span class="comments"><a href="<%- url_for(post.path) %>#disqus_thread">Comments</a></span>
+	<% } %>
+</div>
+<h1 class="title" itemprop="name"><a href="<%- url_for(post.path) %>" itemprop="url"><%- post.title %></a></h1>
+<div class="entry-content" itemprop="articleBody">
+		<%- post.excerpt %>
+	<a href="<%- url_for(post.path) %>" class="more-link"><%- config.excerpt_link %></a>
+</div>

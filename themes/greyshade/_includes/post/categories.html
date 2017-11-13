@@ -1,7 +1,0 @@
-{% for tag in page.meta.tags | split(',') %}
-	<a class="category" href="/?categories&filter={{ tag | encode_hash | escape('url') }}">{{tag}}</a>
-{% endfor %}
-{% for tag in meta.tags %}
-	<a class="category" href="/?categories&filter={{ tag | encode_hash | escape('url') }}">{{tag}}</a>
-{% endfor %}
-

@@ -1,0 +1,15 @@
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date"><%- partial("_partial/post/date", {post: page}) %></div>
+		<div class="tags"><%- partial("_partial/post/categories", {post: page}) %></div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><%- page.title %></h1>
+	<%- page.content %>
+</article>
+<%  if (config.disqus_short_name && page.comments == true) {  %>
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><%- partial("_partial/disqus", {post: page})   %></div>
+</section>
+<% } %>

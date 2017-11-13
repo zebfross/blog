@@ -1,0 +1,41 @@
+Copyright &copy; <%- config.time %>
+<% if (config.author) { %>
+    <%- config.author %>
+<% } else { %>
+    <%- config.title %>
+<% } %>
+
+<!--<%- css("/javascripts/google-code-prettify/prettify.css") %>
+<%- js("/javascripts/google-code-prettify/prettify.js") %>-->
+<%- js("/javascripts/nanoscroller.js") %>
+<script type="text/javascript">
+	function addCodeLineNumbers() {
+	  if (navigator.appName === 'Microsoft Internet Explorer') { return; }
+	  $('pre code').each(function(index, code) {
+		var tableStart = '<figure class="code"><div class="highlight"><table><tbody><tr><td class="gutter">',
+			lineNumbers = '<pre class="line-numbers">',
+			tableMiddle = '</pre></td><td class="code">',
+			tableEnd = '</td></tr></tbody></table></div></figure>',
+			count = $(code)().split("\n").length;
+		for (var i=1;i<=count; i++) {
+		  lineNumbers += '<span class="line-number">'+i+'</span>\n';
+		}
+		var table = tableStart + lineNumbers + tableMiddle + '<pre>'+$(code).parent()()+'</pre>' + tableEnd;
+		$(code).parent().replaceWith(table);
+	  });
+	}
+
+    document.body.onload = function() {
+		//addCodeLineNumbers();
+        var preTags = document.querySelectorAll("pre");
+        for (var i = 0; i < preTags.length; i++) {
+            var tag = preTags[i];
+            tag.className = tag.className + " prettyprint";
+        }
+        //prettyPrint();
+        $(".nano").nanoScroller();
+    };
+	
+</script>
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade">Shashank Mehta</a>
+Powered by: <a href="http://pico.com">Pico</a>

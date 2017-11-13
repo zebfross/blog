@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title><%= config.title %></title>
+	<meta name="author" content="<%= config.author %>">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="" rel="alternate" title="" type="application/atom+xml">
+	
+	<link rel="canonical" href="">
+	<link href="<%= url_for("/favicon.png") %>" rel="shortcut icon">
+	<link href="<%= url_for("/stylesheets/screen.css") %>" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="<%= url_for("/stylesheets/font-awesome.min.css") %>" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<%- partial("google-analytics") %>
+	<link href="<%= url_for("/stylesheets/styles.css") %>" rel="stylesheet" type="text/css">
+	<!--<link href="<%= url_for("/javascripts/google-code-prettify/prettify.css") %>" rel="stylesheet" type="text/css">-->
+</head>

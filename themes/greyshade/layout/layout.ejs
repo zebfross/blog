@@ -1,0 +1,26 @@
+<%- partial("_partial/head")   %>
+<body>
+	<div class="container">
+		<div class="left-col nano">
+			<div class=" nano-content">
+			<div class="intrude-less">
+			<header id="header" class="inner"><%- partial("_partial/header")  %></header>				
+			</div>
+			</div>
+		</div>	
+		<div class="mid-col">
+			<%  if (page.banner == true) { %>
+				<%- partial("_partial/banner") %>
+			<% } %>
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+				<%- body %>
+				</div>
+			</div>
+			<footer id="footer" class="inner"><%- partial("_partial/footer")   %></footer>
+		</div>
+	</div>
+	<%- partial("_partial/after_footer") %>
+</body>
+
+</html>

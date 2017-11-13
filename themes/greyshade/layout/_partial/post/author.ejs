@@ -1,0 +1,6 @@
+<% if (post.author) { %>
+  <% author = post.author %>
+<% } else { %>
+  <% author = config.author %>
+<% } %>
+<% if (author) { %><span class="byline author vcard">Posted by <span class="fn"><%= author %></span></span><% } %>

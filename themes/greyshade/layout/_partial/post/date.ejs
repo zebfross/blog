@@ -1,0 +1,3 @@
+<% if (post.date) { %>
+  <time datetime="<%= moment(post.date).format('MMM DD YY') %>" itemprop="datePublished"><%= moment(post.date).format('MMM Do YY') %></time>
+<% } %> 

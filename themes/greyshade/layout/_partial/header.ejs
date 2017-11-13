@@ -1,0 +1,64 @@
+<div class="profilepic">
+	<% if (config.email_md5) { %>
+	<img src="http://www.gravatar.com/avatar/<%= config.email_md5 %>?s=160" alt="Profile Picture" style="width: 160px;" />
+	<% } else { %>
+	<%- js("/javascripts/md5.js") %>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("<%= config.email %>") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	<% } %>
+</div>
+
+<% if (config.description) { %>
+<section class="aboutme">
+<h2>About Me</h2>
+  <p>
+    <%- config.description %>
+  </p>
+</section>
+<% } %>
+<nav id="main-nav">
+<ul class="main">
+    <li><a href="<%- url_for("/") %>/">Home</a></li>
+    <li><a href="<%- url_for("/archives") %>">Archives</a></li>
+</ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		<% if (config.facebook_user) { %>
+			<a target="_blank" class="facebook" href="http://www.facebook.com/<%- config.facebook_user %>" title="Facebook">Facebook</a>
+		<% } %>
+		<% if (config.googleplus_user && config.googleplus_hidden == false) { %>
+			<a target="_blank" class="google" href="https://plus.google.com/<%- config.googleplus_user %>" rel="author" title="Google+">Google+</a>
+		<% } %>
+		<% if (config.twitter_user) { %>
+			<a target="_blank" class="twitter" href="http://twitter.com/<%- config.twitter_user %>" title="Twitter">Twitter</a>
+		<% } %>
+		<% if (config.github_user) { %>
+			<a target="_blank" class="github" href="https://github.com/<%- config.github_user %>" title="GitHub">GitHub</a>
+		<% } %>
+		<% if (config.coderwall_user) { %>
+			<a target="_blank" class="coderwall" href="https://coderwall.com/<%- config.coderwall_user %>" title="Coderwall">Coderwall</a>
+		<% } %>
+		<% if (config.stackoverflow_user && config.stackoverflow_user_id) { %>
+		  <a target="_blank" class="stackoverflow" href="http://stackoverflow.com/users/<%-config.stackoverflow_user_id%>/<%-config.stackoverflow_user%>" title="StackOverflow"></a>
+		<% } %>
+		<% if (config.linkedin_user) { %>
+			<a target="_blank" class="linkedin" href="http://www.linkedin.com/in/<%- config.linkedin_user %>" title="LinkedIn">LinkedIn</a>
+		<% } %>
+		<% if (config.quora_user) { %>
+			<a target="_blank" class="quora" href="https://quora.com/<%- config.quora_user %>" title="Quora">Quora</a>
+		<% } %>
+		<% if (config.email) { %>
+			<a target="_blank" class="email" href="mailto:<%- config.email %>" title="Email">Email</a>
+		<% } %>
+    	<% if (config.subscribe_rss) { %>
+			<a target="_blank" class="rss" href="<%- config.subscribe_rss %>" title="RSS">RSS</a>
+		<% } %>
+	</div>
+</nav>
+<aside class="sidebar">
+	<%- partial("asides/github") %>
+</aside>

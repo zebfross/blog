@@ -1,0 +1,6 @@
+<% if(post.tags.data[0] && post.tags.data[0].name) { %>
+	<% var tags = post.tags.data[0].name.split(",") %>
+	<% for(var t in tags) { %>
+		<a class="category" href="/?categories&filter=<%= tags[t] %>"><%= tags[t] %></a>
+	<% } %>
+<% } %>

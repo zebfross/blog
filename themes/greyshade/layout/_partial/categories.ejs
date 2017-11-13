@@ -1,0 +1,6 @@
+<% page.posts.each(function(post){ %>
+<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<%- partial("_partial/article", {post: post}) %>
+</article>
+
+<% }) %>
